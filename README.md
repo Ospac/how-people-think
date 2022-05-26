@@ -21,8 +21,8 @@ pip install requirements.txt
 ```
 
 
-### 데이터베이스 (DataBase)
-# create database and table 
+# 데이터베이스 (DataBase)
+### create database and table 
 ```shell
 $ sudo systemctl start postgresql.service
 $ sudo -u postgres createuser --interactive
@@ -31,7 +31,7 @@ $ sudo adduser team6
 $ sudo -u team6 psql
 $ CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC(4,3))
 ```
-# DB Class
+### DB Class
 - insertDB(table, data)
     - table : table명
     - data : [id,timestamp,topic,probability] list form
@@ -41,7 +41,7 @@ $ CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC
     - return [timestamp, probability] list form
 - db = psycopg2.connect(host='localhost', dbname='team6',user='team6',password='team6',port=5432)
 
-# Table
+### Table
 - HISTORY ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC(4,3) )
     - has history of topics
     - id : assign in input order
