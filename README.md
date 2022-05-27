@@ -1,5 +1,7 @@
-### 가상환경 (venv)
-
+# 빠른 시작(Linux 환경 기준)
+/Team6_Final_Project/init.sh를 실행하세요.
+Linux 이외의 환경이거나 문제 발생시 아래를 참고하세요.
+# 가상환경 (venv)
 ```shell
 # 가상환경 생성
 $ python3 -m venv .venv
@@ -49,8 +51,8 @@ $ CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC
     - prob : positive probability of topic ( negative probability = 1 - prob)
 
 # 크롤링 (Crawling)
-### 크롬 및 크롬드라이버 설치
-# For Mac
+## 크롬 및 크롬드라이버 설치
+### For Mac
 맥용 패키지 관리자 brew가 설치되어 있지 않은 경우 아래 링크를 통해 설치합니다.
 
 https://brew.sh/index_koi
@@ -58,7 +60,7 @@ https://brew.sh/index_koi
 ```shell
 # brew install --cask google-chrome chromedriver --force # 크롬이 이미 설치된 경우 강제 재설치
 ```
-# For Windows & Linux
+### For Windows & Linux
 GUI 상으로 구글 크롬이 설치 되어있지 않은 경우 아래 링크를 통해 설치합니다.
 
 https://www.google.com/intl/ko_kr/chrome/
