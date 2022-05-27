@@ -52,7 +52,7 @@ $ CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC
 ### 크롬 및 크롬드라이버 설치
 # For Mac
 ```shell
-# brew install --cask google-chrome chromedriver --force # 크롬이 이미 설치된 경우 강제 재설치 후 chromedriver 다운로드
+# brew install --cask google-chrome chromedriver --force # 크롬이 이미 설치된 경우 강제 재설치
 ```
 # For Windows & Linux
 GUI 상으로 구글 크롬을 설치한 후 크롬 버전에 맞는 chromedriver를 아래 사이트를 통해 다운로드 한 후 twittercrawler.py와 같은 폴더에 넣어줍니다.
