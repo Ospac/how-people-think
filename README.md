@@ -15,7 +15,7 @@ C:\> .venv\Scripts\activate.bat #cmd.exe
 https://foreverhappiness.tistory.com/67
 
 # requirement 설치
-pip install requirements.txt
+pip install -r requirements.txt
 
 #pip freeze > requirements.txt #다른 패키지 설치후 requirements 갱신
 ```
