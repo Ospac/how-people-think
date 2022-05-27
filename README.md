@@ -67,7 +67,7 @@ https://www.google.com/intl/ko_kr/chrome/
 
 https://support.google.com/chrome/answer/95414?hl=ko&co=GENIE.Platform%3DDesktop#zippy=%2C업데이트-및-현재-브라우저-버전-확인
 
-chromedriver를 아래 사이트를 통해 다운로드 한 후 twittercrawler.py와 같은 폴더에 넣어줍니다.
+크롬 버전과 동일한 버전의 chromedriver를 아래 사이트를 통해 다운로드 한 후 TwitterCrawler.py가 존재하는 폴더에 넣어줍니다. (Team6_Final_Project/api/)
 
 https://sites.google.com/chromium.org/driver/downloads
 
