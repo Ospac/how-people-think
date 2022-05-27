@@ -59,7 +59,15 @@ https://brew.sh/index_koi
 # brew install --cask google-chrome chromedriver --force # 크롬이 이미 설치된 경우 강제 재설치
 ```
 # For Windows & Linux
-GUI 상으로 구글 크롬을 설치한 후 크롬 버전에 맞는 chromedriver를 아래 사이트를 통해 다운로드 한 후 twittercrawler.py와 같은 폴더에 넣어줍니다.
+GUI 상으로 구글 크롬이 설치 되어있지 않은 경우 아래 링크를 통해 설치합니다.
+
+https://www.google.com/intl/ko_kr/chrome/
+
+크롬 버전을  아래 링크를 참고하여 확인합니다.
+
+https://support.google.com/chrome/answer/95414?hl=ko&co=GENIE.Platform%3DDesktop#zippy=%2C업데이트-및-현재-브라우저-버전-확인
+
+chromedriver를 아래 사이트를 통해 다운로드 한 후 twittercrawler.py와 같은 폴더에 넣어줍니다.
 
 https://sites.google.com/chromium.org/driver/downloads
 
