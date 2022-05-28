@@ -34,13 +34,23 @@ $ sudo -u team6 psql
 $ CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC(4,3))
 ```
 ### DB Class
-- insertDB(table, data)
-    - table : table명
-    - data : [id,timestamp,topic,probability] list form
-- readDB(table, topic)
-    - table : table명
-    - topic : 입력한 topic
-    - return [timestamp, probability] list form
+- get_id(table) : get id for input data
+
+- get_timestamps : get current_timestamp
+
+- insertDB(data, keyword)
+    - insert data into history, keywords table
+    - data = dictionary{’id’ : id, ‘ts’ : ts, ‘topic’ : topic , ‘prob’ : prob }
+    - keyword = dictionary{’positive’ : [words_list], ‘negative’ : [words_list], ‘neutral’ : [words_list]}
+    
+- get_history(topic)
+    - get history corresponding with topic
+    - return type : dictionary{’ts’ : [timestamp_list], ‘prob’ : [probability_list]}
+    
+- get_keywords(topic, ts)
+    - get keywords corresponding with topic, ts(timestamp)
+    - return type : dictionary{’positive’ : [words_list], ‘negative’ : [words_list], ‘neutral’ : [words_list]}
+    - 
 - db = psycopg2.connect(host='localhost', dbname='team6',user='team6',password='team6',port=5432)
 
 ### Table
@@ -49,6 +59,12 @@ $ CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC
     - id : assign in input order
     - topic : input topic
     - prob : positive probability of topic ( negative probability = 1 - prob)
+
+- KEYWORDS ( id INT, type VARCHAR(10),word VARCHAR(30))
+    - topic 검색 후 추출된 단어를 저장하는 table
+    - id : matching for history's id 
+    - type : positive, negative, neutral
+    - word : keyword
 
 # 크롤링 (Crawling)
 ## 크롬 및 크롬드라이버 설치
