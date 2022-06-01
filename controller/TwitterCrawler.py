@@ -15,30 +15,30 @@ twitterid = os.environ['TWITTERID']
 twitterpw = os.environ['TWITTERPW']
 
 def twitter_login(word):
-    #try:
-    driver = webdriver.Chrome()
-    driver.wait = WebDriverWait(driver, 10)
-    twitter_page = 'https://twitter.com/login'
-    driver.get(twitter_page)
-    driver.implicitly_wait(5)
-    #driver.maximize_window()
+    try:
+        driver = webdriver.Chrome()
+        driver.wait = WebDriverWait(driver, 10)
+        twitter_page = 'https://twitter.com/login'
+        driver.get(twitter_page)
+        driver.implicitly_wait(5)
+        #driver.maximize_window()
 
-    sign_in = driver.find_element(By.NAME, "text")
-    sign_in.send_keys(twitterid)
-    driver.implicitly_wait(1)
+        sign_in = driver.find_element(By.NAME, "text")
+        sign_in.send_keys(twitterid)
+        driver.implicitly_wait(1)
 
-    next_btn = driver.find_element(By.XPATH,
-                                   '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]/div')
-    next_btn.click()
-    driver.implicitly_wait(5)
-    password = driver.find_element(By.XPATH,
-                                   '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[2]/div/label/div/div[2]/div[1]/input')
-    password.send_keys(twitterpw)
-    driver.implicitly_wait(1)
-    login_btn = driver.find_element(By.XPATH,
-                                    '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div')
-    login_btn.click()
-    return search_sentence(word, driver)
+        next_btn = driver.find_element(By.XPATH,
+                                       '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]/div')
+        next_btn.click()
+        driver.implicitly_wait(5)
+        password = driver.find_element(By.XPATH,
+                                       '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[2]/div/label/div/div[2]/div[1]/input')
+        password.send_keys(twitterpw)
+        driver.implicitly_wait(1)
+        login_btn = driver.find_element(By.XPATH,
+                                        '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div')
+        login_btn.click()
+        return search_sentence(word, driver)
     except Exception as e:
         print(e)
 
