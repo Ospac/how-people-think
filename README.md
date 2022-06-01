@@ -77,7 +77,7 @@ https://brew.sh/index_koi
 ```shell
 # brew install --cask google-chrome chromedriver --force # 크롬이 이미 설치된 경우 강제 재설치
 ```
-
+TwitterCrawler.py 내 19번 라인의 webdriver.Chrome()의 파라미터가 비어있어도 chromedriver를 인식합니다.
 ### For WSL & Linux
 ```shell
 $ cd /tmp
@@ -87,7 +87,7 @@ $ sudo apt install --fix-broken -y
 $ sudo dpkg -i google-chrome-stable_current_amd64.deb
 $ google-chrome --version
 ```
-크롬 버전과 동일한 버전의 chromedriver를 아래 사이트를 통해 다운로드 한 후 TwitterCrawler.py가 존재하는 폴더에 넣어줍니다. (Team6_Final_Project/controller/)
+크롬 버전과 동일한 버전의 chromedriver를 아래 사이트를 통해 다운로드 한 후 TwitterCrawler.py 내 19번 라인의 webdriver.Chrome()의 파라미터에 chromedriver의 상대주소를 넘겨줍니다.
 
 https://sites.google.com/chromium.org/driver/downloads
 ## Troubleshooting
