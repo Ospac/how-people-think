@@ -16,7 +16,7 @@ twitterpw = os.environ['TWITTERPW']
 
 def twitter_login(word):
     try:
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome('./chromedriver')
         driver.wait = WebDriverWait(driver, 10)
         twitter_page = 'https://twitter.com/login'
         driver.get(twitter_page)
