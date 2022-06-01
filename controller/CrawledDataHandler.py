@@ -5,8 +5,8 @@ from controller.SentimentReq import SentimentReq
 def CrawledDataHandler(searchInput): #searchInput을 crawling function으로 전달
     #Get CrawledData
 	#with open("test.json", "r") as crawledJson:
-		#crawledData = json.load(crawledJson)
-	crawledData = TwitterCrawler(searchInput)
+	    #crawledData = json.load(crawledJson)
+    crawledData = TwitterCrawler(searchInput)
     if len(crawledData[searchInput]) >= 5120:
         return "5120자를 초과하였습니다." , 400
 
