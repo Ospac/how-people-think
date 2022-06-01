@@ -19,9 +19,11 @@ sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt install --fix-broken -y
 sudo dpkg -i google-chrome-stable_current_amd64.deb
-google-chrome --version
 
 cd ${PATH_NAME}
 echo "moved to ${PATH_NAME}"
 
 echo "Done."
+echo ""
+google-chrome --version
+echo "Download the same version of chromedriver as googole-chrome"
