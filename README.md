@@ -1,6 +1,9 @@
 # 빠른 시작(Linux 환경 기준)
 /Team6_Final_Project/init.sh를 실행하세요.
+크롤링 (Crawling) 부분을 참고해서 chromedriver를 설치 후 flask run --port=포트번호로 실행합니다.
+
 Linux 이외의 환경이거나 문제 발생시 아래를 참고하세요.
+
 # 가상환경 (venv)
 ```shell
 # 가상환경 생성
@@ -78,7 +81,7 @@ https://brew.sh/index_koi
 # brew install --cask google-chrome chromedriver --force # 크롬이 이미 설치된 경우 강제 재설치
 ```
 TwitterCrawler.py 내 19번 라인의 webdriver.Chrome()의 파라미터가 비어있어도 chromedriver를 인식합니다.
-### For WSL & Linux
+### For Linux $ WSL
 ```shell
 $ cd /tmp
 $ sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
