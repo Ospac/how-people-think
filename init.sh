@@ -6,7 +6,7 @@ sudo apt-get install -y python-pip
 
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt 
+pip install -r requirement.txt 
 
 PATH_NAME=$(pwd)
 
