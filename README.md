@@ -77,20 +77,23 @@ https://brew.sh/index_koi
 ```shell
 # brew install --cask google-chrome chromedriver --force # 크롬이 이미 설치된 경우 강제 재설치
 ```
-### For Windows & Linux
-GUI 상으로 구글 크롬이 설치 되어있지 않은 경우 아래 링크를 통해 설치합니다.
 
-https://www.google.com/intl/ko_kr/chrome/
-
-크롬 버전을  아래 링크를 참고하여 확인합니다.
-
-https://support.google.com/chrome/answer/95414?hl=ko&co=GENIE.Platform%3DDesktop#zippy=%2C업데이트-및-현재-브라우저-버전-확인
-
-크롬 버전과 동일한 버전의 chromedriver를 아래 사이트를 통해 다운로드 한 후 TwitterCrawler.py가 존재하는 폴더에 넣어줍니다. (Team6_Final_Project/api/)
+### For WSL & Linux
+```shell
+$ cd /tmp
+$ sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+$ sudo dpkg -i google-chrome-stable_current_amd64.deb
+$ sudo apt install --fix-broken -y
+$ sudo dpkg -i google-chrome-stable_current_amd64.deb
+$ google-chrome --version
+```
+크롬 버전과 동일한 버전의 chromedriver를 아래 사이트를 통해 다운로드 한 후 TwitterCrawler.py가 존재하는 폴더에 넣어줍니다. (Team6_Final_Project/controller/)
 
 https://sites.google.com/chromium.org/driver/downloads
+## Troubleshooting
+### 한글 깨짐 현상
+아래 링크를 참고하여 해결합니다.
 
-리눅스의 경우 아래 명령어로도 구글 크롬 설치가 가능합니다.
-```shell
-$ sudo apt install google-chrome
-```
+https://www.lesstif.com/lpt/ubuntu-linux-fcitx-129008000.html
+### 트위터 언어에 따른 코드 변경
+TwitterCrawler.py 파일의 55번 라인에서 '최신'을 'Latest'로 바꿔주세요.
