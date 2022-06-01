@@ -1,6 +1,7 @@
 import json
 from controller.DetectLanguage import DetectLanguage
 from controller.SentimentReq import SentimentReq
+from controller.TwitterCrawler import TwitterCrawler
 
 def CrawledDataHandler(searchInput): #searchInput을 crawling function으로 전달
     #Get CrawledData
