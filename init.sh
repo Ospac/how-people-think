@@ -24,6 +24,4 @@ google-chrome --version
 cd ${PATH_NAME}
 echo "moved to ${PATH_NAME}"
 
-flask run --port=8947
-
 echo "Done."
