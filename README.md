@@ -1,5 +1,6 @@
 # 빠른 시작(Linux 환경 기준)
 /Team6_Final_Project/init.sh를 실행하세요.
+
 크롤링 (Crawling) 부분을 참고해서 chromedriver를 설치 후 flask run --port=포트번호로 실행합니다.
 
 Linux 이외의 환경이거나 문제 발생시 아래를 참고하세요.
