@@ -1,9 +1,11 @@
 # 빠른 시작(Linux 환경 기준)
 /Team6_Final_Project/init.sh를 실행하세요.
 
-크롤링 (Crawling) 부분을 참고해서 chromedriver를 설치 후 flask run --port=포트번호로 실행합니다.
+chromedriver는 기본적으로 102.0.5005.61 버전이라고 가정하고 진행합니다.
 
-Linux 이외의 환경이거나 문제 발생시 아래를 참고하세요.
+현재 google-chrome의 stable version이 102이나 추후 업데이트 될 경우 직접 수정 하셔야합니다.
+
+Linux 이외의 환경이거나 문제 발생시 아래 내용들을 참고하시기 바랍니다.
 
 # 가상환경 (venv)
 ```shell
@@ -99,5 +101,3 @@ https://sites.google.com/chromium.org/driver/downloads
 아래 링크를 참고하여 해결합니다.
 
 https://www.lesstif.com/lpt/ubuntu-linux-fcitx-129008000.html
-### 트위터 언어에 따른 코드 변경
-TwitterCrawler.py 파일의 55번 라인에서 '최신'을 'Latest'로 바꿔주세요.
