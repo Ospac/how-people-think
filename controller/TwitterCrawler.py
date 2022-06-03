@@ -16,7 +16,10 @@ twitterpw = os.environ['TWITTERPW']
 
 def twitter_login(word):
     try:
-        driver = webdriver.Chrome('./chromedriver')
+        try:
+            driver = webdriver.Chrome('./controller/chromedriver')
+        except Exception as e:
+            driver = webdriver.Chrome()
         driver.wait = WebDriverWait(driver, 10)
         twitter_page = 'https://twitter.com/login'
         driver.get(twitter_page)
@@ -52,7 +55,10 @@ def search_sentence(query, driver):
     box.submit()
     query = query[1:-1]
     wait = WebDriverWait(driver, 10)
-    driver.find_element(By.LINK_TEXT, '최신').click() # change to 'Latest' depending on your language
+    try:
+        driver.find_element(By.LINK_TEXT, '최신').click()
+    except Exception as e:
+        driver.find_element(By.LINK_TEXT, 'Latest').click()
     sleep(2)
 
     for i in range(10):
