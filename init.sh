@@ -25,10 +25,10 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 cd ${PATH_NAME}
 echo "moved to ${PATH_NAME}"
 
-echo "Please enter the Password"
-read p
 while :
 do
+	echo "Please enter the password"
+	read p
 	unzip -P ${p} env.zip
 	if [ $? -eq 0 ]; then
 		echo "You entered correct password!"
@@ -39,6 +39,8 @@ do
 done
 
 echo "Done."
-echo ""
 google-chrome --version
 echo "Make sure the current version is 102. If not, please manually download later version of chromedriver."
+echo "running flask server..."
+
+flask run --port=8888
