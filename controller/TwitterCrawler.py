@@ -1,3 +1,10 @@
+##############################
+# TwitterCrawler.py          #
+# by JaeyoungAhn 2020118082  #
+# This program uses Selenium #
+# to scrape tweets.          #
+##############################
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -11,16 +18,25 @@ from time import sleep
 import time
 import os
 
-twitterid = os.environ['TWITTERID']
-twitterpw = os.environ['TWITTERPW']
+twitterid = os.environ['TWITTERID'] # read account ID and password
+twitterpw = os.environ['TWITTERPW'] # for twitter in .env file
+
+def TwitterCrawler(word): # entire program begins
+    return twitter_login(word)
 
 def twitter_login(word):
+    """
+    Using Selenium instead of Beautiful Soup is recommended
+    as twitter has dynamic web structure and also requires
+    login process. Selenium can handle these tasks well but Beautiful Soup.
+    """
     try:
         try:
-            driver = webdriver.Chrome('./controller/chromedriver')
-        except Exception as e:
-            driver = webdriver.Chrome()
+            driver = webdriver.Chrome('./controller/chromedriver') # instantiating chrome webdriver.
+        except Exception as e: # In case of using brew package manager in mac OS
+            driver = webdriver.Chrome() # Specifying the path is not required.
         driver.wait = WebDriverWait(driver, 10)
+        
         twitter_page = 'https://twitter.com/login'
         driver.get(twitter_page)
         driver.implicitly_wait(5)
@@ -55,7 +71,7 @@ def search_sentence(query, driver):
     box.submit()
     query = query[1:-1]
     wait = WebDriverWait(driver, 10)
-    try:
+    try: # The text to find differs depending on your selected language on Twitter.
         driver.find_element(By.LINK_TEXT, '최신').click()
     except Exception as e:
         driver.find_element(By.LINK_TEXT, 'Latest').click()
@@ -78,9 +94,9 @@ def twitter_search(query, driver, searched_word, sentence_history, finished):
     if finished == 1:
         return
     tweets = driver.find_elements(By.XPATH, '//article[@data-testid="tweet"]')
-    for tweet in tweets[-15:]:
+    for tweet in tweets[-15:]: # try to crawl last 15 tweets at a time after scrolling down
         text = one_tweet(tweet)
-        if text:
+        if text: # filtering process that removes unnecessary stop words
             text = text.replace("\r", " ").replace("\n", " ") 
             history = ''.join(text)
             if text[0]=='@' or (text[0]=='h' and text[1]=='t' and text[2]=='t' and text[3]=='p'):
@@ -91,13 +107,12 @@ def twitter_search(query, driver, searched_word, sentence_history, finished):
                 if query not in searched_word:
                     searched_word[query]=' '
                 else:
-                    if len(searched_word[query]) + len(text) >= 5120:
+                    if len(searched_word[query]) + len(text) + 1 >= 5120: # current len + new sentence len + delimiter len
                         finished = 1
                         break
-                    searched_word[query]+=text
+                    searched_word[query]+=text+"|" # '|' is a delimiter for separating sentences
             
     driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
     sleep(1.5)
 
-def TwitterCrawler(word):
-    return twitter_login(word)
+
