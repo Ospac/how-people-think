@@ -10,11 +10,11 @@ let barChart = new Chart(ChartOne, {
         label : 'peoples think',
         data:[10, 20, 30],
         backgroundColor: [
-  					'#251D3A',
-  					'#2A2550',
-  					'#E04D01',
+  					'#FF5F00',
+  					'#B20600',
+  					'#00092C',
   				],
-  			
+
     }]
 },
 options: {
