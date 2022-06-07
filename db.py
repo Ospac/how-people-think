@@ -43,9 +43,8 @@ class DB:
             self.execute(sql)
             
             # step2 : insert data into 'keywords' table
-            for key in keywords:
-                for word in keywords[key]:
-                    sql = "INSERT INTO KEYWORDS VALUES ({id},\'{type}\',\'{word}\')".format(id=data['id'],type=key,word=word)
+            for word in keywords:
+                    sql = "INSERT INTO KEYWORDS VALUES ({id},\'{word}\')".format(id=data['id'],word=word)
                     self.execute(sql)
 
     def get_history(self,topic):
@@ -62,22 +61,15 @@ class DB:
         return dict
 
     def get_keywords(self,topic, ts):
-        pos=[]
-        neg=[]
-        neu=[]
+        temp=[]
         self.cursor.execute(" SELECT id from history where topic = \'{topic}\' and ts= \'{ts}\'".format(topic=topic, ts = ts))
         result = self.cursor.fetchall()
         id = result[0][0]
 
-        sql = " SELECT type, word from keywords where id = \'{id}\'".format(id=id)
+        sql = " SELECT word from keywords where id = \'{id}\'".format(id=id)
         self.execute(sql)
         result = self.cursor.fetchall()
         for i in result:
-            if i[0]=='positive':
-                pos.append(i[1])
-            elif i[0]=='negative':
-                neg.append(i[1])
-            else:
-                neu.append(i[1])
-        dict={'positive':pos,'negative':neg,'neutral':neu}
-        return dict
+            temp.append(i[0])
+        
+        return temp
