@@ -9,8 +9,12 @@ class Result(Resource):
             parser.add_argument('search_input', type=str, help="search_input cannot be converted", required=True, location="args")
             args = parser.parse_args()
             _searchInput = args['search_input']
-            resultData = CrawledDataHandler(_searchInput)
-            return make_response(render_template('result.html', resultData = resultData))
-
+            data = CrawledDataHandler(_searchInput)
+            return make_response(render_template(
+                'result.html', 
+                sentimentData = data["sentiment"][0],
+                searchInput   = data["searchInput"],
+                imgPath       = data["imgPath"]
+            ))
         except Exception as e:
             return {'error': str(e)}
