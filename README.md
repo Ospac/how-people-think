@@ -38,7 +38,7 @@ $ sudo -u postgres createdb team6
 $ sudo adduser team6
 $ sudo -u team6 psql
 $ CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC(4,3))
-$ CREATE table keywords ( id INT, type VARCHAR(10),word VARCHAR(30))
+$ CREATE table keywords ( id INT,word VARCHAR(30))
 ```
 ### DB Class
 - get_id(table) : get id for input data
@@ -48,7 +48,7 @@ $ CREATE table keywords ( id INT, type VARCHAR(10),word VARCHAR(30))
 - insertDB(data, keyword)
     - insert data into history, keywords table
     - data = dictionary{’id’ : id, ‘ts’ : ts, ‘topic’ : topic , ‘prob’ : prob }
-    - keyword = dictionary{’positive’ : [words_list], ‘negative’ : [words_list], ‘neutral’ : [words_list]}
+    - keyword = list[key_words]
     
 - get_history(topic)
     - get history corresponding with topic
@@ -56,7 +56,7 @@ $ CREATE table keywords ( id INT, type VARCHAR(10),word VARCHAR(30))
     
 - get_keywords(topic, ts)
     - get keywords corresponding with topic, ts(timestamp)
-    - return type : dictionary{’positive’ : [words_list], ‘negative’ : [words_list], ‘neutral’ : [words_list]}
+    - return type : list[key_words]
     - 
 - db = psycopg2.connect(host='localhost', dbname='team6',user='team6',password='team6',port=5432)
 
@@ -67,10 +67,9 @@ $ CREATE table keywords ( id INT, type VARCHAR(10),word VARCHAR(30))
     - topic : input topic
     - prob : positive probability of topic ( negative probability = 1 - prob)
 
-- KEYWORDS ( id INT, type VARCHAR(10),word VARCHAR(30))
+- KEYWORDS ( id INT,word VARCHAR(30))
     - topic 검색 후 추출된 단어를 저장하는 table
     - id : matching for history's id 
-    - type : positive, negative, neutral
     - word : keyword
 
 # 크롤링 (Crawling)
