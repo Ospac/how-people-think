@@ -30,13 +30,16 @@
           <div class="col-5">
             <br></br>
             <h3>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Sentiment Analysis</h3>
-            <!--{{resultData.sentiment}} {{resultData.confidenceScores}}-->
+            {{searchInput}}
+            {{sentimentData.sentiment}}
+            {{sentimentData.confidenceScores}}
               <canvas id="ChartOne" width="500" heigth="300"></canvas>
             </div>
           <div class="col-5">
             <br></br>
             <h3>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Point keyword</h3>
               <!--wordcloude-->
+              <img alt="wordcloud" src={{imgPath}}>
             </div>
           <div class="col-2"></div>
           </div>
@@ -44,7 +47,7 @@
           <div class ="row">
               <center>
                 <br></br>
-                <button class="btn btn-primary" onclick="location.href='index.html'">back</button >
+                <button class="btn btn-primary" type="submit" action="/index" method ="GET">back</button >
                 <br></br>
               </center>
           </div>

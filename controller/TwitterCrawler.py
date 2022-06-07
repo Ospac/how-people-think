@@ -110,7 +110,7 @@ def twitter_search(query, driver, searched_word, sentence_history, finished):
                     if len(searched_word[query]) + len(text) + 1 >= 5120: # current len + new sentence len + delimiter len
                         finished = 1
                         break
-                    searched_word[query]+=text+"|" # '|' is a delimiter for separating sentences
+                    searched_word[query]+=text
             
     driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
     sleep(1.5)
