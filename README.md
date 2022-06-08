@@ -1,13 +1,13 @@
 # 빠른 시작(Linux(bash) 환경 기준)
-/Team6_Final_Project/init.sh를 실행하세요.
-
-chromedriver는 기본적으로 102.0.5005.61 버전이라고 가정하고 진행합니다.
+/Team6_Final_Project/init.sh를 실행하여 모든 과정을 빠르게 시작할 수 있습니다.
 
 현재 google-chrome의 stable version은 102입니다.
 
-추후 stable version이 업데이트 될 경우 하단의 크롬 드라이버 설치 관련 내용을 참고하여 직접 최신 버전의 chromedriver를 다운로드 하셔야합니다.
+chromedriver의 버전이 google-chrome 버전 102에 대응되어 있습니다.
 
-Linux(bash) 이외의 환경이거 문제 발생시 아래 내용들을 참고하시기 바랍니다.
+추후 stable version이 업데이트 될 경우 하단의 chromedriver 설치 관련 내용을 참고하여 직접 맞는 버전을 다운로드 하셔야합니다.
+
+Linux(bash) 이외의 환경이거나 문제 발생시 아래 내용들을 참고하시기 바랍니다.
 
 # 가상환경 (venv)
 ```shell
