@@ -42,12 +42,19 @@
               <img alt="wordcloud" src={{imgPath}}>
             </div>
           <div class="col-2"></div>
+              {% for ts, value in keywordHistory.items() %}
+                    <span>{{ ts }}</span>
+                  {% for item in keywordHistory[ts]['keyword'] %}
+                    <span>{{ item }}</span>
+                  {% endfor %}
+                  <span>{{ keywordHistory[ts]['prob'] }}</span>
+              {% endfor %}
           </div>
 
           <div class ="row">
               <center>
                 <br></br>
-                <button class="btn btn-primary" type="submit" action="/index" method ="GET">back</button >
+                <button class="btn btn-primary" onclick="history.back();">back</button >
                 <br></br>
               </center>
           </div>

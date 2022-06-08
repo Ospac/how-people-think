@@ -8,7 +8,7 @@ let barChart = new Chart(ChartOne, {
     datasets : [
       {
         label : 'peoples think',
-        data:[10, 20, 30],
+        data:[sentimentData.confidenceScore.positivesentimentData.confidenceScore.positive, sentimentData.confidenceScore.positive.negative, sentimentData.confidenceScore.neutral ],
         backgroundColor: [
   					'#FF5F00',
   					'#B20600',
