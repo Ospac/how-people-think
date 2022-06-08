@@ -99,7 +99,7 @@ def twitter_search(query, driver, searched_word, sentence_history, finished):
         if text: # filtering process that removes unnecessary stop words
             text = text.replace("\r", " ").replace("\n", " ") 
             history = ''.join(text)
-            if text[0]=='@' or (text[0]=='h' and text[1]=='t' and text[2]=='t' and text[3]=='p'):
+            if text[0]=='@' or (text[0]=='h' and "http" in text:
                 continue
             if history not in sentence_history:
                 sentence_history.add(history)
