@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from routes.Index import Index
 from routes.Result import Result
-#from controller.InitThreading import InitThreading
+from controller.InitThreading import InitThreading
 
 app = Flask(__name__)
 api = Api(app)
