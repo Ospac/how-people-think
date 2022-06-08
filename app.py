@@ -2,7 +2,6 @@ from flask import Flask
 from flask_restful import Api
 from routes.Index import Index
 from routes.Result import Result
-from controller.TrendCrawler import TrendCrawler
 #from controller.ThreadingStart import InitThreading
 
 app = Flask(__name__)
@@ -15,7 +14,7 @@ api.add_resource(Result, '/result')
 #automatic crawling with interval
 index = 0
 trendinglist = []
-#InitThreading
+#InitThreading()
 
 #API Server
 if __name__ == '__main__':
