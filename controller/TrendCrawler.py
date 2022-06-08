@@ -21,7 +21,6 @@ def trend_search():
         trendingword = []
         trendinglist1 = driver.find_elements(By.XPATH, '//*[@id="app"]/div/main/div/section/div/section/section[1]/div[2]/div/div[1]/div')
         for trendingtitle in trendinglist1:
-            print("hello")
             trendinglist = trendingtitle.find_element(By.XPATH, './/a/span[2]').text
             trendingword.append(trendinglist)
         trendinglist2 = driver.find_elements(By.XPATH, '//*[@id="app"]/div/main/div/section/div/section/section[1]/div[2]/div/div[2]/div')
