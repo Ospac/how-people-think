@@ -15,7 +15,7 @@ api.add_resource(Result, '/result')
 #automatic crawling with interval
 index = 0
 trendinglist = []
-ThreadingStart()
+#InitThreading
 
 #API Server
 if __name__ == '__main__':
