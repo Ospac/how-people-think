@@ -43,4 +43,13 @@ google-chrome --version
 echo "Make sure the current version is 102. If not, please manually download later version of chromedriver."
 echo "running flask server..."
 
+sudo apt install postgresql postgresql-contrib
+sudo systemctl start postgresql.service
+sudo -u postgres createuser --interactive
+sudo -u postgres createdb team6
+sudo adduser team6
+su - team6 -c 'psql -d "team6" -c "CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC(4,3))"'
+su - team6 -c 'psql -d "team6" -c "CREATE table keywords ( id INT,word VARCHAR(30))"'
+
+
 flask run --port=8888
