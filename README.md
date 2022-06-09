@@ -39,8 +39,8 @@ $ sudo -u postgres createuser --interactive
 $ sudo -u postgres createdb team6
 $ sudo adduser team6
 $ sudo -u team6 psql
-$ CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC(4,3))
-$ CREATE table keywords ( id INT,word VARCHAR(30))
+# CREATE table history ( id INT, ts varchar(16), topic VARCHAR(30), pos_prob NUMERIC(4,3) ,neg_prob NUMERIC(4,3),neu_prob NUMERIC(4,3));
+# CREATE table keywords ( id INT,word VARCHAR(30));
 ```
 ### DB Class
 - get_id(table) : get id for input data
