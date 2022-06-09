@@ -21,6 +21,10 @@ class DB:
     def commit(self):
         self.cursor.commit()
 
+    def get_words(self):
+        self.cursor.execute("SELECT topic FROM HISTORY ORDER BY ts DESC LIMIT 16")
+        words = self.cursor.fetchall()
+        return words
 
     def get_timestamp(self):
         self.cursor.execute("""SELECT CURRENT_TIMESTAMP""")
