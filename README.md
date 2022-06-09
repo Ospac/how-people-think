@@ -51,7 +51,11 @@ $ CREATE table keywords ( id INT,word VARCHAR(30))
     - insert data into history, keywords table
     - data = dictionary{’id’ : id, ‘ts’ : ts, ‘topic’ : topic , ‘prob’ : prob }
     - keyword = list[key_words]
-    
+- history_exist(topic)
+    - if history of topics within a week is exist, return True
+    - else return False
+
+
 - get_history(topic)
     - get history corresponding with topic
     - return type : dictionary{’ts’ : [timestamp_list], ‘prob’ : [probability_list]}
@@ -63,11 +67,14 @@ $ CREATE table keywords ( id INT,word VARCHAR(30))
 - db = psycopg2.connect(host='localhost', dbname='team6',user='team6',password='team6',port=5432)
 
 ### Table
-- HISTORY ( id INT, ts varchar(16), topic VARCHAR(30), prob NUMERIC(4,3) )
+- HISTORY ( id INT, ts varchar(16), topic VARCHAR(30), pos_prob NUMERIC(4,3)
+                                                    ,neg_prob NUMERIC(4,3),neu_prob NUMERIC(4,3))
     - has history of topics
     - id : assign in input order
     - topic : input topic
-    - prob : positive probability of topic ( negative probability = 1 - prob)
+    - pos_prob : 검색한 topic 에 대한 sentimental analysis 의 positive probability
+    - neg_prob : 검색한 topic 에 대한 sentimental analysis 의 negative probability
+    - neu_prob : 검색한 topic 에 대한 sentimental analysis 의 neutral probability
 
 - KEYWORDS ( id INT,word VARCHAR(30))
     - topic 검색 후 추출된 단어를 저장하는 table

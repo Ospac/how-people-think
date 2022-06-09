@@ -1,73 +1,104 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
-  <head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How people think</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/styles.css" rel="stylesheet" />
+  <!-- Google fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap"
+    rel="stylesheet" />
+  <!-- icon-->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-    <!--basic code-->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--bootstrap css import-->
+  <link href="../static/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/styles2.css" rel="stylesheet" />
 
-    <title>How think</title>
-
-    <!--bootstrap css import-->
-    <link href="../static/css/styles.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/styles2.css" rel="stylesheet" />
-    <!-- icon-->
-    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
-
-  </head>
-
-    <body>
-      <div class="contatiner">
-
-        <h1 class="fst-italic">How people think about this topic</h1>
-
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col-5">
-            <br></br>
-            <h3>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Sentiment Analysis</h3>
-            {{searchInput}}
-            {{sentimentData.sentiment}}
-            {{sentimentData.confidenceScores}}
-              <canvas id="ChartOne" width="500" heigth="300"></canvas>
-            </div>
-          <div class="col-5">
-            <br></br>
-            <h3>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Point keyword</h3>
-              <!--wordcloude-->
-              <img alt="wordcloud" src={{imgPath}}>
-            </div>
-          <div class="col-2"></div>
-              {% for ts, value in keywordHistory.items() %}
-                    <span>{{ ts }}</span>
-                  {% for item in keywordHistory[ts]['keyword'] %}
-                    <span>{{ item }}</span>
-                  {% endfor %}
-                  <span>{{ keywordHistory[ts]['prob'] }}</span>
-              {% endfor %}
-          </div>
-
-          <div class ="row">
-              <center>
-                <br></br>
-                <button class="btn btn-primary" onclick="history.back();">back</button >
-                <br></br>
-              </center>
-          </div>
-
-      </div>
-
-    <!--cahrtjs import-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
     integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!--jsfile import-->
-    <script src="../js/main.js"></script>
+  <!-- chartjs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let ChartOne = document.getElementById('ChartOne').getContext("2d");
+      Feeling = document.querySelector("#ChartOne")
+      let barChart = new Chart(ChartOne, {
+        type: 'doughnut', // pie, line, doughnut, polarArea
+        data: {
+          labels: ['positive', 'neutral', 'negative'],
+          datasets: [
+            {
+              label: 'peoples think',
+              data: [Feeling.pos, Feeling.neu, Feeling.neg],
+              backgroundColor: [
+                '#FF5F00',
+                '#B20600',
+                '#00092C',
+              ],
 
-    </body>
-  </html>
+            }]
+        },
+        options: {
+          responsive: false,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <!-- main video-->
+  <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="../static/assets/mp4/bg.mp4" type="video/mp4" />
+  </video>
+  <div class="masthead">
+    <div class="masthead-content text-white">
+      <div class="container-fluid px4 px-lg-0">
+        <h2 class="fst-italic lh-1 mb-4">How people think about {{searchInput}}?</h2>
+        <div class="row">
+          <div class="col-6">
+            <h3>Sentiment Analysis</h3>
+            <canvas id="ChartOne" width="220" data-pos={{sentimentData.confidenceScores["positive"]}}
+              data-neu={{sentimentData.confidenceScores["neutral"]}}
+              data-neg={{sentimentData.confidenceScores["negative"]}}> </canvas>
+          </div>
+          <div class="col-6">
+            <h3>Keywords</h3>
+            <!--wordcloud-->
+            <img alt="wordcloud" src={{imgPath}}>
+          </div>
+        </div>
+        </br>
+        <div class="row">
+          {% for ts, value in keywordHistory.items() %}
+          <div class="col-6">
+            <span>{{ ts }}</span>
+            <span>{{ keywordHistory[ts]['pos_prob'] }}</span>
+            <span>{{ keywordHistory[ts]['neu_prob'] }}</span>
+            <span>{{ keywordHistory[ts]['neg_prob'] }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <body>
+
+</html>

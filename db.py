@@ -1,3 +1,5 @@
+from operator import truediv
+from time import time
 import psycopg2
 
 class DB:
@@ -39,7 +41,8 @@ class DB:
 
     def insertDB(self,data,keywords):
             # step1 : insert data into 'HISTORY' table
-            sql = " INSERT INTO HISTORY VALUES ({id},\'{ts}\',\'{topic}\',{prob})".format(id=data['id'],ts=data['ts'],topic=data['topic'],prob=data['prob'])
+            sql = " INSERT INTO HISTORY VALUES ({id},\'{ts}\',\'{topic}\',{pos_prob},{neg_prob},{neu_prob})".format(id=data['id'],ts=data['ts'],
+                                    topic=data['topic'],pos_prob=data['pos_prob'],neg_prob=data['neg_prob'],neu_prob=data['neu_prob'])
             self.execute(sql)
             
             # step2 : insert data into 'keywords' table
@@ -47,17 +50,34 @@ class DB:
                     sql = "INSERT INTO KEYWORDS VALUES ({id},\'{word}\')".format(id=data['id'],word=word)
                     self.execute(sql)
 
+    def history_exist(self,topic):
+        timestamps = self.get_history(topic)['ts']
+        if len(timestamps)!=0:
+            for ts in timestamps:
+                date = ts[:10]
+                sql = "select (current_date - to_date(\'{date}\',\'yyyy-mm-dd\'))".format(date=date)
+                self.execute(sql)
+                temp = self.cursor.fetchall()
+                for t in temp:
+                    if t[0]<=7: return True
+        return False
+     
+
+
     def get_history(self,topic):
         ts = []
-        prob = []
-        sql = " SELECT ts, prob from history where topic = \'{topic}\'".format(topic=topic)
+        pos_prob = []
+        neg_prob=[]
+        neu_prob=[]
+        sql = " SELECT ts, pos_prob, neg_prob, neu_prob from history where topic = \'{topic}\'".format(topic=topic)
         self.execute(sql)
         result = self.cursor.fetchall()
-        print(result)
         for i in result:
             ts.append(i[0])
-            prob.append(i[1])
-        dict={'ts':ts, 'prob':prob}
+            pos_prob.append(i[1])
+            neg_prob.append(i[2])
+            neu_prob.append(i[3])
+        dict={'ts':ts, 'pos_prob':pos_prob,'neg_prob':neg_prob,'neu_prob':neu_prob}
         return dict
 
     def get_keywords(self,topic, ts):
