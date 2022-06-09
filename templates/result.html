@@ -26,42 +26,30 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
     integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <!-- chartjs -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      let ChartOne = document.getElementById('ChartOne').getContext("2d");
-      Feeling = document.querySelector("#ChartOne")
-      let barChart = new Chart(ChartOne, {
-        type: 'doughnut', // pie, line, doughnut, polarArea
-        data: {
-          labels: ['positive', 'neutral', 'negative'],
-          datasets: [
-            {
-              label: 'peoples think',
-              data: [Feeling.pos, Feeling.neu, Feeling.neg],
-              backgroundColor: [
-                '#FF5F00',
-                '#B20600',
-                '#00092C',
-              ],
-
-            }]
-        },
-        options: {
-          responsive: false,
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          },
-        }
+      <!-- chartjs -->
+      <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let ChartOne = document.getElementById('ChartOne').getContext("2d");
+        let Feeling = document.querySelector("#ChartOne");
+        let barChart = new Chart(ChartOne, {
+          type: 'doughnut', // pie, line, doughnut, polarArea
+          data: {
+            labels: ['positive', 'neutral', 'negative'],
+            datasets: [
+              {
+                label: 'peoples think',
+                data: [Feeling.dataset.pos, Feeling.dataset.neu, Feeling.dataset.neg],
+                backgroundColor: [
+                  '#FF5F00',
+                  '#B20600',
+                  '#4166f9',
+                ],
+              }]
+          }
+        });
       });
-    });
-  </script>
-</head>
+    </script>
+  </head>
 
 <body>
   <!-- main video-->
@@ -75,7 +63,8 @@
         <div class="row">
           <div class="col-6">
             <h3>Sentiment Analysis</h3>
-            <canvas id="ChartOne" width="220" data-pos={{sentimentData.confidenceScores["positive"]}}
+            <canvas id="ChartOne" width="220" 
+              data-pos={{sentimentData.confidenceScores["positive"]}}
               data-neu={{sentimentData.confidenceScores["neutral"]}}
               data-neg={{sentimentData.confidenceScores["negative"]}}> </canvas>
           </div>
@@ -87,18 +76,18 @@
         </div>
         </br>
         <div class="row">
-          {% for ts, value in keywordHistory.items() %}
-          <div class="col-6">
-            <span>{{ ts }}</span>
-            <span>{{ keywordHistory[ts]['pos_prob'] }}</span>
-            <span>{{ keywordHistory[ts]['neu_prob'] }}</span>
-            <span>{{ keywordHistory[ts]['neg_prob'] }}</span>
-          </div>
-          {% endfor %}
+            <h3>History</h3>
+              {% for ts, value in keywordHistory.items() %}
+              <div style="padding-bottom:10px;">
+                  <h5 style="display:inline">{{ ts }}</h5>
+                  <span style="color:#FF5F00">{{ keywordHistory[ts]['pos_prob'] }}</span>
+                  <span style="color:#B20600">{{ keywordHistory[ts]['neu_prob'] }}</span>
+                  <span style="color:#4166f9">{{ keywordHistory[ts]['neg_prob'] }}</span>
+                {% endfor %}
+              </div>
         </div>
       </div>
     </div>
   </div>
   <body>
-
 </html>
