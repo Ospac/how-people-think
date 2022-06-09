@@ -9,4 +9,5 @@ for i in range(len(getwords)):
     tranwords[i].split("(',)")
 class Index(Resource):
     def get(self):
-        return make_response(render_template('index.html', words = tranwords))
+        return make_response(render_template('index.html', words = tranwords)) # words for recently searched words
+        
