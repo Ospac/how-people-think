@@ -61,17 +61,17 @@
       <div class="container-fluid px4 px-lg-0">
         <h2 class="fst-italic lh-1 mb-4">How people think about {{searchInput}}?</h2>
         <div class="row">
-          <div class="col-6">
+          <div>
             <h3>Sentiment Analysis</h3>
-            <canvas id="ChartOne" width="220" 
+            <canvas id="ChartOne" height="300" width="300"
               data-pos={{sentimentData.confidenceScores["positive"]}}
               data-neu={{sentimentData.confidenceScores["neutral"]}}
               data-neg={{sentimentData.confidenceScores["negative"]}}> </canvas>
           </div>
-          <div class="col-6">
+          <div>
             <h3>Keywords</h3>
             <!--wordcloud-->
-            <img alt="wordcloud" src={{imgPath}}>
+            <img alt="wordcloud" src={{imgPath}} width="500">
           </div>
         </div>
         </br>
