@@ -91,7 +91,6 @@ https://brew.sh/index_koi
 ```shell
 # brew install --cask google-chrome chromedriver --force # 크롬이 이미 설치된 경우 강제 재설치
 ```
-TwitterCrawler.py 내 19번 라인의 webdriver.Chrome()의 파라미터를 비워주세요. 파라미터가 없어도 chromedriver를 인식합니다.
 ### For Linux & WSL
 ```shell
 $ cd /tmp
