@@ -1,3 +1,13 @@
+![Uploading image.jpg...](/presentation/presentation%20(1).jpg)
+![Uploading image.jpg...](/presentation/presentation%20(2).jpg)
+![Uploading image.jpg...](/presentation/presentation%20(3).jpg)
+![Uploading image.jpg...](/presentation/presentation%20(4).jpg)
+![Uploading image.jpg...](/presentation/presentation%20(5).jpg)
+![Uploading image.jpg...](/presentation/presentation%20(6).jpg)
+![Uploading image.jpg...](/presentation/presentation%20(7).jpg)
+![Uploading image.jpg...](/presentation/presentation%20(8).jpg)
+![Uploading image.jpg...](/presentation/presentation%20(9).jpg)
+
 # 빠른 시작(Linux(bash) 환경 기준)
 /Team6_Final_Project/init.sh를 실행하여 모든 과정을 빠르게 시작할 수 있습니다.
 
